@@ -1,0 +1,12 @@
+{
+  "name": "fin-otchet-ai-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Демонстрационный пример для лекции «Составление финансовой отчётности с применением ИИ-сервисов»",
+  "scripts": {
+    "build:docx": "node 03_make_docx.js"
+  },
+  "dependencies": {
+    "docx": "^9.7.1"
+  }
+}
