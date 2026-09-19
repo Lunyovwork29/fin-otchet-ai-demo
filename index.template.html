@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Составление финансовой отчётности с применением ИИ-сервисов</title>
+<meta name="description" content="Демонстрационный пример для лекции: автоматическая обработка бухгалтерских операций, поиск ошибок и составление отчётности с помощью ИИ.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Демонстрационный пример для лекции</span>
+    <h1>Составление финансовой отчётности с применением ИИ-сервисов</h1>
+    <p class="sub">{{COMPANY}} — {{PERIOD}}. Синтетический набор данных с двумя намеренно
+    заложенными ошибками, которые автоматически находит и объясняет ИИ-сервис обработки данных.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section id="metrics">
+    <h2><span class="num">1</span> Итоги месяца (после проверки и исправления ошибок)</h2>
+    <p class="section-desc">Ключевые показатели, рассчитанные скриптом обработки на основе {{N_OPERATIONS}} первичных операций.</p>
+    <div class="metrics">
+      <div class="metric"><div class="label">Выручка</div><div class="value">{{TOTAL_INCOME}} ₸</div></div>
+      <div class="metric"><div class="label">Расходы</div><div class="value">{{TOTAL_EXPENSE}} ₸</div></div>
+      <div class="metric profit"><div class="label">Чистая прибыль</div><div class="value">{{NET_PROFIT}} ₸</div></div>
+      <div class="metric"><div class="label">Остаток на конец месяца</div><div class="value">{{CLOSING_BALANCE}} ₸</div></div>
+    </div>
+    <div class="compare">
+      Без проверки ИИ (с задвоенным платежом и ошибкой в сумме зарплаты) отчёт показал бы
+      прибыль всего <b>{{NAIVE_PROFIT}} ₸</b> вместо реальных <b>{{NET_PROFIT}} ₸</b> — расхождение {{PROFIT_DIFF}} ₸.
+      Это и есть эффект автоматической проверки данных перед составлением отчётности.
+    </div>
+  </section>
+
+  <section id="errors">
+    <h2><span class="num">2</span> Ошибки, найденные ИИ-сервисом</h2>
+    <p class="section-desc">В исходную таблицу были намеренно заложены две типовые ошибки бухгалтера.</p>
+    <ul class="error-list">
+      <li>
+        <span class="tag">Задвоенный платёж</span><br>
+        Операция «{{DUP_PURPOSE}}» ({{DUP_AMOUNT}} ₸) внесена в таблицу
+        {{DUP_OCCURRENCES}} раза — с одинаковой датой, контрагентом, назначением и суммой. Лишний платёж исключён
+        из отчётности как ошибочный.
+      </li>
+      <li>
+        <span class="tag">Сумма не соответствует назначению платежа</span><br>
+        В операции «{{MISMATCH_PURPOSE}}» указана сумма
+        {{MISMATCH_ACTUAL}} ₸, хотя расчёт из самого назначения платежа даёт {{MISMATCH_EXPECTED}} ₸.
+        Расхождение {{MISMATCH_DIFF}} ₸ найдено автоматически и исправлено.
+      </li>
+    </ul>
+  </section>
+
+  <section id="explain">
+    <h2><span class="num">3</span> Пояснение к отчёту простым языком</h2>
+    <div class="card explain">
+      <p>{{EXPLAIN_P1}}</p>
+      <p>{{EXPLAIN_P2}}</p>
+      <p>{{EXPLAIN_P3}}</p>
+    </div>
+  </section>
+
+  <section id="operations">
+    <h2><span class="num">4</span> Исходные операции с классификацией по счетам</h2>
+    <p class="section-desc">Все {{N_OPERATIONS}} операции за месяц с автоматически присвоенным счётом
+    типового плана счетов РК. Строки с ошибками подсвечены и содержат пояснение ИИ-проверки.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Дата</th><th>Контрагент</th><th>Назначение платежа</th>
+            <th>Сумма, ₸</th><th>Тип</th><th>Счёт</th><th>Статья</th>
+          </tr>
+        </thead>
+        <tbody>
+<!--ROWS-->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="pipeline">
+    <h2><span class="num">5</span> Как это устроено</h2>
+    <div class="steps card">
+      <div class="step">
+        <div class="n">1</div>
+        <div class="txt"><b>Исходные данные</b><span>Таблица из {{N_OPERATIONS}} «сырых» операций за месяц (Excel) с двумя намеренно заложенными ошибками.</span></div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div class="txt"><b>Скрипт обработки (Python)</b><span>Классифицирует операции по типовому плану счетов РК, находит дубли и расхождения сумм, считает баланс и ОПиУ.</span></div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div class="txt"><b>Готовый результат</b><span>Итоговый Excel-отчёт с подсветкой ошибок и Word-пояснительная записка — готовы к показу на лекции.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="downloads">
+    <h2><span class="num">6</span> Файлы для скачивания</h2>
+    <div class="downloads">
+      <a class="dl" href="01_iskhodnye_dannye.xlsx"><span class="ext">XLSX</span><span>Исходные данные<div class="meta">{{N_OPERATIONS}} операции с ошибками</div></span></a>
+      <a class="dl" href="02_obrabotka.py"><span class="ext">PY</span><span>Скрипт обработки<div class="meta">классификация, поиск ошибок, отчётность</div></span></a>
+      <a class="dl" href="output/Itogovaya_otchetnost.xlsx"><span class="ext">XLSX</span><span>Итоговая отчётность<div class="meta">операции, ОПиУ, баланс</div></span></a>
+      <a class="dl" href="output/Poyasnitelnaya_zapiska.docx"><span class="ext">DOCX</span><span>Пояснительная записка<div class="meta">итоги + разбор ошибок</div></span></a>
+    </div>
+  </section>
+
+</div>
+
+<div class="wrap">
+  <footer>
+    Учебный демонстрационный пример для лекции «Составление финансовой отчётности с применением
+    ИИ-сервисов». Все данные, компании и операции — синтетические, созданы для целей обучения.
+  </footer>
+</div>
+
+</body>
+</html>
